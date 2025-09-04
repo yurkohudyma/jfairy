@@ -135,8 +135,6 @@ public class Bootstrap {
 				return new EnFairyModule(dataMaster, randomGenerator);
 			case ES:
 				return new EsFairyModule(dataMaster, randomGenerator);
-			case FR:
-				return new EsFairyModule(dataMaster, randomGenerator);
 			case SV:
 				return new SvFairyModule(dataMaster, randomGenerator);
 			case ZH:
@@ -145,6 +143,8 @@ public class Bootstrap {
 				return new DeFairyModule(dataMaster, randomGenerator);
 			case KA:
 				return new KaFairyModule(dataMaster, randomGenerator);
+			case UK:
+				return new UkFairyModule(dataMaster, randomGenerator);
 			default:
 				LOG.info("No data for your language - using EN");
 				return new EnFairyModule(dataMaster, randomGenerator);

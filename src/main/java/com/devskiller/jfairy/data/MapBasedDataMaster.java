@@ -13,7 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.devskiller.jfairy.Bootstrap;
 import org.apache.commons.lang3.EnumUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.snakeyaml.engine.v2.api.Load;
 import org.snakeyaml.engine.v2.api.LoadSettings;
 import com.devskiller.jfairy.producer.BaseProducer;
@@ -27,6 +30,8 @@ public class MapBasedDataMaster implements DataMaster {
 	public static final String LANGUAGE_TAG = "language";
 	private final BaseProducer baseProducer;
 	private Map<String, Object> dataSource = new CaseInsensitiveMap();
+
+	private static final Logger LOG = LoggerFactory.getLogger(Bootstrap.class);
 
 	@Inject
 	public MapBasedDataMaster(BaseProducer baseProducer) {
@@ -94,6 +99,8 @@ public class MapBasedDataMaster implements DataMaster {
 	public void readResources(String path) throws IOException {
 		Enumeration<URL> resources =
 				getClass().getClassLoader().getResources(path);
+		LOG.info(" ---> path = {}", path);
+		LOG.info(" ---> resources = {}", resources);
 
 		if (!resources.hasMoreElements()) {
 			throw new IllegalArgumentException(String.format("File %s was not found on classpath", path));
